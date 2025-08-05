@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>eCommerce Dashboard</title>
+    <style>
+        /* Estilos básicos para la página de menú */
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start; /* Alinea al inicio verticalmente */
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            background-color: #f4f4f4;
+            color: #333;
+            padding-top: 50px; /* Espacio para el encabezado */
+        }
+        .header {
+            width: 100%;
+            text-align: center;
+            margin-bottom: 40px;
+        }
+        h1 {
+            color: #0056b3;
+            margin-bottom: 10px;
+        }
+        p#welcomeMessage {
+            font-size: 1.1em;
+            color: #555;
+        }
+        .menu-container {
+            background-color: #fff;
+            padding: 30px 40px;
+            border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            max-width: 600px;
+            width: 90%;
+        }
+        .menu-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); /* Columnas responsivas */
+            gap: 20px;
+            margin-top: 30px;
+        }
+        .menu-item {
+            background-color: #007bff;
+            color: white;
+            padding: 25px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-size: 1.2em;
+            font-weight: bold;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100px;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+        .menu-item:hover {
+            background-color: #0056b3;
+            transform: translateY(-3px);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+        /* Estilo para el botón de cerrar sesión (simulado) */
+        #logoutButton {
+            background-color: #dc3545;
+            color: white;
+            padding: 8px 15px;
+            border: none;
+            border-radius: 5px;
+            font-size: 0.9em;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            margin-top: 30px; /* Espacio debajo del menú */
+        }
+        #logoutButton:hover {
+            background-color: #c82333;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>Bienvenido a tu Panel de Control</h1>
+        <p id="welcomeMessage">Cargando información del usuario...</p>
+    </div>
+
+    <div class="menu-container">
+        <h2>Navegación</h2>
+        <div class="menu-grid">
+            <a href="productos.html" class="menu-item">Productos (CRUD)</a>
+            <a href="categorias.html" class="menu-item">Categorías (CRUD)</a>
+            <a href="carrito.html" class="menu-item">Carrito (Hacer Pedido)</a>
+            <a href="pedidos.html" class="menu-item">Mis Pedidos</a>
+        </div>
+    </div>
+
+    <button id="logoutButton">Cerrar Sesión (Cambiar Usuario)</button>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', async () => {
+            const welcomeMessage = document.getElementById('welcomeMessage');
+            const logoutButton = document.getElementById('logoutButton');
+            const API_BASE_URL = 'http://localhost:8080/api'; // Asegúrate que esta URL sea correcta
+
+            // 1. Verificar si hay un usuario loggeado (ID en localStorage)
+            const loggedInUserId = localStorage.getItem('loggedInUserId');
+
+            if (!loggedInUserId) {
+                // Si no hay ID de usuario, redirigir a la página de selección
+                alert('No se ha seleccionado ningún usuario. Por favor, selecciona tu usuario.');
+                window.location.href = 'index.html';
+                return; // Detener la ejecución del script
+            }
+
+            // 2. Opcional: Obtener los detalles del usuario para un mensaje de bienvenida personalizado
+            // Esto requiere un endpoint en el backend como /api/users/{id}
+            try {
+                const response = await fetch(`${API_BASE_URL}/users/${loggedInUserId}`);
+                if (response.ok) {
+                    const user = await response.json();
+                    welcomeMessage.textContent = `¡Hola, ${user.nombre} ${user.apellido} (${user.usuario})!`;
+                } else {
+                    console.error('Error al obtener detalles del usuario:', response.statusText);
+                    welcomeMessage.textContent = `¡Hola, Usuario ID: ${loggedInUserId}!`; // Mensaje de fallback
+                }
+            } catch (error) {
+                console.error('Error de red al obtener detalles del usuario:', error);
+                welcomeMessage.textContent = `¡Hola, Usuario ID: ${loggedInUserId}!`; // Mensaje de fallback
+            }
+
+            // 3. Manejar el botón de "Cerrar Sesión" (Simulado)
+            logoutButton.addEventListener('click', () => {
+                // Eliminar el ID del usuario de localStorage
+                localStorage.removeItem('loggedInUserId');
+                alert('Has cerrado tu sesión simulada.');
+                // Redirigir de nuevo a la página de selección de usuario
+                window.location.href = 'index.html';
+            });
+        });
+    </script>
+</body>
+</html>

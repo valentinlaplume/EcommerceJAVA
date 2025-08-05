@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gestión de Productos</title>
+    <style>
+        /* Estilos generales */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: #f4f4f4;
+            color: #333;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .container {
+            background-color: #fff;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            width: 90%;
+            max-width: 1200px;
+            margin-bottom: 30px;
+        }
+        h1 {
+            color: #0056b3;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        .message {
+            padding: 10px;
+            margin-bottom: 20px;
+            border-radius: 5px;
+            text-align: center;
+        }
+        .success {
+            background-color: #d4edda;
+            color: #155724;
+            border: 1px solid #c3e6cb;
+        }
+        .error {
+            background-color: #f8d7da;
+            color: #721c24;
+            border: 1px solid #f5c6cb;
+        }
+
+        /* Navegación */
+        .navbar {
+            display: flex;
+            justify-content: center;
+            background-color: #333;
+            padding: 10px 0;
+            border-radius: 5px;
+            margin-bottom: 20px;
+            width: 90%;
+            max-width: 1200px;
+        }
+        .navbar a {
+            color: white;
+            padding: 10px 20px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: background-color 0.3s ease;
+        }
+        .navbar a:hover {
+            background-color: #575757;
+            border-radius: 5px;
+        }
+        .navbar a.active {
+            background-color: #007bff;
+            border-radius: 5px;
+        }
+
+        /* Formulario */
+        .form-container {
+            margin-bottom: 40px;
+            border: 1px solid #eee;
+            padding: 25px;
+            border-radius: 8px;
+            background-color: #fcfcfc;
+        }
+        .form-container h2 {
+            color: #0056b3;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+        .form-group {
+            margin-bottom: 15px;
+        }
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+        .form-group input[type="text"],
+        .form-group input[type="number"],
+        .form-group textarea,
+        .form-group select {
+            width: calc(100% - 22px); /* Ancho completo menos padding y borde */
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 1em;
+        }
+        .form-actions {
+            text-align: center;
+            margin-top: 25px;
+        }
+        .btn {
+            background-color: #28a745;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1em;
+            transition: background-color 0.3s ease;
+            margin: 0 5px;
+        }
+        .btn-primary { background-color: #007bff; }
+        .btn-primary:hover { background-color: #0056b3; }
+        .btn-success { background-color: #28a745; }
+        .btn-success:hover { background-color: #218838; }
+        .btn-warning { background-color: #ffc107; color: #333; }
+        .btn-warning:hover { background-color: #e0a800; }
+        .btn-danger { background-color: #dc3545; }
+        .btn-danger:hover { background-color: #c82333; }
+        .btn-cancel { background-color: #6c757d; }
+        .btn-cancel:hover { background-color: #5a6268; }
+
+        /* Tabla de Productos */
+        .product-table-container {
+            overflow-x: auto; /* Para tablas en pantallas pequeñas */
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+        table th, table td {
+            border: 1px solid #ddd;
+            padding: 12px;
+            text-align: left;
+        }
+        table th {
+            background-color: #007bff;
+            color: white;
+            position: sticky; /* Fixed header */
+            top: 0;
+            z-index: 10;
+        }
+        table tbody tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+        table tbody tr:hover {
+            background-color: #e9e9e9;
+        }
+        .table-actions button {
+            margin-right: 5px;
+            padding: 6px 10px;
+            font-size: 0.85em;
+        }
+    </style>
+</head>
+<body>
+    <div class="navbar">
+        <a href="ecommerce.html">Inicio</a>
+        <a href="#" class="active">Productos</a>
+        <a href="categorias.html">Categorías</a>
+        <a href="carrito.html">Carrito</a>
+        <a href="pedidos.html">Mis Pedidos</a>
+        <a href="index.html" id="logoutNavLink">Cerrar Sesión</a>
+    </div>
+
+    <div class="container">
+        <h1>Gestión de Productos</h1>
+        <div id="messageArea" class="message" style="display:none;"></div>
+
+        <div class="form-container">
+            <h2 id="formTitle">Agregar Nuevo Producto</h2>
+            <form id="productForm">
+                <input type="hidden" id="productId"> <div class="form-group">
+                    <label for="productName">Nombre del Producto:</label>
+                    <input type="text" id="productName" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="productPrice">Precio:</label>
+                    <input type="number" id="productPrice" step="0.01" min="0.01" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="productStock">Stock:</label>
+                    <input type="number" id="productStock" min="0" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="productDescription">Descripción:</label>
+                    <textarea id="productDescription" rows="3"></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label for="productCategory">Categoría:</label>
+                    <select id="productCategory" required>
+                        <option value="">Cargando categorías...</option>
+                    </select>
+                </div>
+
+                <div class="form-actions">
+                    <button type="submit" class="btn btn-success" id="saveProductButton">Guardar Producto</button>
+                    <button type="button" class="btn btn-cancel" id="cancelEditButton" style="display:none;">Cancelar Edición</button>
+                </div>
+            </form>
+        </div>
+
+        <div class="product-table-container">
+            <h2>Lista de Productos</h2>
+            <table id="productTable">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Nombre</th>
+                        <th>Precio</th>
+                        <th>Stock</th>
+                        <th>Descripción</th>
+                        <th>Categoría</th>
+                        <th>Acciones</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr><td colspan="7" style="text-align: center;">Cargando productos...</td></tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <script src="js/productos.js"></script> 
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const loggedInUserId = localStorage.getItem('loggedInUserId');
+            if (!loggedInUserId) {
+                alert('No se ha seleccionado ningún usuario. Por favor, selecciona tu usuario.');
+                window.location.href = 'index.html'; // Redirigir si no hay sesión simulada
+            }
+
+            const logoutNavLink = document.getElementById('logoutNavLink');
+            logoutNavLink.addEventListener('click', (e) => {
+                e.preventDefault(); // Evita la navegación inmediata
+                localStorage.removeItem('loggedInUserId');
+                alert('Has cerrado tu sesión simulada.');
+                window.location.href = 'index.html';
+            });
+        });
+    </script>
+</body>
+</html>

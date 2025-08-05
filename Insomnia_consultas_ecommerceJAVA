@@ -1,0 +1,448 @@
+type: spec.insomnia.rest/5.0
+name: CURSO-JAVA
+meta:
+  id: wrk_c9f3e1872a9f41d2a0dac8507213d757
+  created: 1752939671840
+  modified: 1752939671840
+collection:
+  - name: Productos
+    meta:
+      id: fld_ced8110a6671407cb727b383fcb7676b
+      created: 1753033281579
+      modified: 1753055836356
+      sortKey: -1753033281580
+    children:
+      - url: http://localhost:8080/api/products
+        name: nuevo
+        meta:
+          id: req_3e01a7491bb944f5b660be2cd525a70e
+          created: 1752939706308
+          modified: 1753055756368
+          isPrivate: false
+          sortKey: -1753033342151
+        method: POST
+        body:
+          mimeType: application/json
+          text: >-
+            {
+              "nombre": "Kit de Limpieza para PC",
+              "precio": 2,
+              "stock": 75,
+              "descripcion": "Kit completo para mantener tu computadora impecable, incluye aire comprimido, paño de microfibra y cepillos antiestáticos.",
+              "idCategoria": 99
+            }
+        headers:
+          - name: Content-Type
+            value: application/json
+          - name: User-Agent
+            value: insomnia/11.1.0
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: http://localhost:8080/api/products/list
+        name: listar todos
+        meta:
+          id: req_34303cae8edd4020870d664058405508
+          created: 1753033339336
+          modified: 1753053035574
+          isPrivate: false
+          sortKey: -1753033342001
+        method: GET
+        headers:
+          - name: User-Agent
+            value: insomnia/11.1.0
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: http://localhost:8080/api/products/find
+        name: Obtener por Nombre
+        meta:
+          id: req_6f91b51b109548838866b839c1abdeae
+          created: 1753033364145
+          modified: 1753053045492
+          isPrivate: false
+          sortKey: -1753033341851
+        method: GET
+        body:
+          mimeType: application/json
+        parameters:
+          - id: pair_71a57964e1034f6b8c262d9c48697929
+            name: nombreBusqueda
+            value: teclado
+            disabled: false
+        headers:
+          - name: Content-Type
+            value: application/json
+          - name: User-Agent
+            value: insomnia/11.1.0
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: http://localhost:8080/api/products/30
+        name: Obtener por ID
+        meta:
+          id: req_36467901837c44f5912710eaa2b2f50c
+          created: 1753036137243
+          modified: 1753053039316
+          isPrivate: false
+          sortKey: -1753033341951
+        method: GET
+        headers:
+          - name: User-Agent
+            value: insomnia/11.1.0
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: http://localhost:8080/api/products/1
+        name: Editar
+        meta:
+          id: req_a0461a38428b472895cda379c2c0d101
+          created: 1753036170142
+          modified: 1753053031688
+          isPrivate: false
+          sortKey: -1753033342051
+        method: PUT
+        body:
+          mimeType: application/json
+          text: >-
+            {
+              "nombre": "Monitor Gamer Ultra HD",
+              "precio": 1250.00,
+              "stock": 8,
+              "descripcion": "Monitor de alta resolución 4K para una experiencia de juego inmersiva. 144Hz.",
+              "idCategoria": 1
+            }
+        headers:
+          - name: Content-Type
+            value: application/json
+          - name: User-Agent
+            value: insomnia/11.1.0
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: http://localhost:8080/api/products/31
+        name: Eliminar
+        meta:
+          id: req_4153e10d8fb54faaa857512a5b98602b
+          created: 1753042345061
+          modified: 1753053051825
+          isPrivate: false
+          sortKey: -1753033341651
+        method: DELETE
+        headers:
+          - name: User-Agent
+            value: insomnia/11.1.0
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+  - name: Pedidos
+    meta:
+      id: fld_ebfa1bd8627b49e0975234211910b58c
+      created: 1753052490465
+      modified: 1753061782839
+      sortKey: -1753052490465
+    children:
+      - url: http://localhost:8080/api/pedidos
+        name: Nuevo
+        meta:
+          id: req_f8600f37c1a94663bb9c08d54e3f6715
+          created: 1753053121415
+          modified: 1753054147849
+          isPrivate: false
+          sortKey: -1753053121415
+        method: POST
+        body:
+          mimeType: application/json
+          text: |-
+            {
+              "idUsuario": 3,
+              "itemsPedido": [
+                { "idProducto": 6, "cantidad": 999 },
+                { "idProducto": 9, "cantidad": 1 }
+              ]
+            }
+        headers:
+          - name: Content-Type
+            value: application/json
+          - name: User-Agent
+            value: insomnia/11.1.0
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: http://localhost:8080/api/usuarios/1/pedidos
+        name: Obtener Pedidos Por ID Usuario
+        meta:
+          id: req_923191ce01f54e2db48fc59a20ebff81
+          created: 1753053483530
+          modified: 1753053589911
+          isPrivate: false
+          sortKey: -1753053483530
+        method: GET
+        headers:
+          - name: User-Agent
+            value: insomnia/11.1.0
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: http://localhost:8080/api/pedidos/1
+        name: Obtener uno Por ID
+        meta:
+          id: req_640c56fc66cf424da55316ee7b78834f
+          created: 1753053625495
+          modified: 1753053767476
+          isPrivate: false
+          sortKey: -1753053625495
+        method: GET
+        headers:
+          - name: User-Agent
+            value: insomnia/11.1.0
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+  - name: Categorias
+    meta:
+      id: fld_1cd9bf0165f84e0ebfcc4cbc4e96daf0
+      created: 1753055828197
+      modified: 1753055828197
+      sortKey: -1753055828197
+    children:
+      - url: http://localhost:8080/api/categories
+        name: Nuevo
+        meta:
+          id: req_9e45d1918de14fdb981ce995cdfcb1df
+          created: 1753055996360
+          modified: 1753056035929
+          isPrivate: false
+          sortKey: -1753055996360
+        method: POST
+        body:
+          mimeType: application/json
+          text: '{"nombre": "Electrónica"}'
+        headers:
+          - name: Content-Type
+            value: application/json
+          - name: User-Agent
+            value: insomnia/11.1.0
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: http://localhost:8080/api/categories/list
+        name: listar
+        meta:
+          id: req_b229a6b0731748c29ee74db6bcc275d5
+          created: 1753056038736
+          modified: 1753056059432
+          isPrivate: false
+          sortKey: -1753056038736
+        method: GET
+        headers:
+          - name: User-Agent
+            value: insomnia/11.1.0
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: http://localhost:8080/api/categories/1
+        name: Obtener por ID
+        meta:
+          id: req_3fb748591f7c472c96a5d5759863e86d
+          created: 1753056066519
+          modified: 1753056078819
+          isPrivate: false
+          sortKey: -1753056066519
+        method: GET
+        headers:
+          - name: User-Agent
+            value: insomnia/11.1.0
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: http://localhost:8080/api/categories/find?nombre=electro
+        name: Obtener por Nombre
+        meta:
+          id: req_9b19eb9731344327894906c3c322575c
+          created: 1753056089091
+          modified: 1753056097567
+          isPrivate: false
+          sortKey: -1753056089091
+        method: GET
+        headers:
+          - name: User-Agent
+            value: insomnia/11.1.0
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: http://localhost:8080/api/categories/6
+        name: Editar
+        meta:
+          id: req_ae5d73a4e8a24e63bcb161c7345c4761
+          created: 1753056138751
+          modified: 1753056174103
+          isPrivate: false
+          sortKey: -1753056138751
+        method: PUT
+        body:
+          mimeType: application/json
+          text: '{"nombre": "Electrónica Moderna"}'
+        headers:
+          - name: Content-Type
+            value: application/json
+          - name: User-Agent
+            value: insomnia/11.1.0
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: http://localhost:8080/api/categories/2
+        name: Eliminar
+        meta:
+          id: req_5c654c72c12d4f4fa3949c3650dbc23c
+          created: 1753056184192
+          modified: 1753057451230
+          isPrivate: false
+          sortKey: -1753056184192
+        method: DELETE
+        headers:
+          - name: User-Agent
+            value: insomnia/11.1.0
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+  - name: Users
+    meta:
+      id: fld_8fb727bf08144f63b7b65b550dba3874
+      created: 1753057828676
+      modified: 1753057828676
+      sortKey: -1753057828676
+    children:
+      - url: http://localhost:8080/api/users/list
+        name: New Request
+        meta:
+          id: req_f430a2d137534feab157b836a31f1f11
+          created: 1753057833467
+          modified: 1753057848438
+          isPrivate: false
+          sortKey: -1753057833467
+        method: GET
+        headers:
+          - name: User-Agent
+            value: insomnia/11.1.0
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+  - url: http://localhost:8080/h2-console
+    name: CONSOLA BASE DE DATOS
+    meta:
+      id: req_36f5d5fd20e343ddbad40b164c44c024
+      created: 1753041650092
+      modified: 1753042410134
+      isPrivate: false
+      sortKey: -1753041650092
+    method: GET
+    headers:
+      - name: User-Agent
+        value: insomnia/11.1.0
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
+cookieJar:
+  name: Default Jar
+  meta:
+    id: jar_7ae8b8db6fb2684ef676feb5b32339c7aeb6e66f
+    created: 1752939671848
+    modified: 1752939671848
+environments:
+  name: Base Environment
+  meta:
+    id: env_7ae8b8db6fb2684ef676feb5b32339c7aeb6e66f
+    created: 1752939671845
+    modified: 1752939671845
+    isPrivate: false
+spec:
+  meta:
+    id: spc_a95ba4d0723d4e11a42b04c04aa77980
+    created: 1752939671843
+    modified: 1752939671843

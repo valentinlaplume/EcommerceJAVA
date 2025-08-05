@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bienvenido - Selección de Usuario</title>
+    <style>
+        /* Estilos básicos para centrar y dar una apariencia limpia */
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            background-color: #f4f4f4;
+            color: #333;
+        }
+        .container {
+            background-color: #fff;
+            padding: 30px 40px;
+            border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            max-width: 400px;
+            width: 90%;
+        }
+        h1 {
+            color: #0056b3;
+            margin-bottom: 25px;
+        }
+        label {
+            display: block;
+            margin-bottom: 10px;
+            font-size: 1.1em;
+            color: #555;
+        }
+        select {
+            width: 100%;
+            padding: 10px 15px;
+            margin-bottom: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 1em;
+            box-sizing: border-box; /* Incluye padding y borde en el ancho total */
+            -webkit-appearance: none; /* Elimina estilos por defecto en Webkit */
+            -moz-appearance: none;    /* Elimina estilos por defecto en Mozilla */
+            appearance: none;         /* Elimina estilos por defecto */
+            background-image: url('data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22292.4%22%20height%3D%22292.4%22%3E%3Cpath%20fill%3D%22%23000%22%20d%3D%22M287%2C146.2L146.2%2C287L5.4%2C146.2L146.2%2C5.4z%22%2F%3E%3C%2Fsvg%3E'); /* Flecha personalizada */
+            background-repeat: no-repeat;
+            background-position: right 10px top 50%;
+            background-size: 12px;
+        }
+        button {
+            background-color: #007bff;
+            color: white;
+            padding: 12px 25px;
+            border: none;
+            border-radius: 5px;
+            font-size: 1.1em;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+        .message {
+            margin-top: 15px;
+            color: #dc3545;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Bienvenido a Nuestra Tienda</h1>
+        <label for="userSelect">Selecciona tu usuario para empezar:</label>
+        <select id="userSelect">
+            <option value="">Cargando usuarios...</option>
+        </select>
+        <button id="startButton">EMPEZAR</button>
+        <p id="errorMessage" class="message" style="display:none;">Por favor, selecciona un usuario.</p>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', async () => {
+            const userSelect = document.getElementById('userSelect');
+            const startButton = document.getElementById('startButton');
+            const errorMessage = document.getElementById('errorMessage');
+
+            const API_BASE_URL = 'http://localhost:8080/api'; // Asegúrate que esta URL sea correcta para tu backend
+
+            // Función para cargar los usuarios en el desplegable
+            async function loadUsers() {
+                try {
+                    const response = await fetch(`${API_BASE_URL}/users/list`);
+                    if (!response.ok) {
+                        if (response.status === 204) { // No Content
+                            userSelect.innerHTML = '<option value="">No hay usuarios disponibles</option>';
+                            console.warn('No hay usuarios registrados en la base de datos.');
+                            startButton.disabled = true; // Deshabilita el botón si no hay usuarios
+                            return;
+                        }
+                        throw new Error(`Error HTTP: ${response.status}`);
+                    }
+                    const users = await response.json();
+
+                    // Limpiar opciones y añadir la por defecto
+                    userSelect.innerHTML = '<option value="">-- Selecciona un usuario --</option>';
+                    users.forEach(user => {
+                        const option = document.createElement('option');
+                        option.value = user.id; // Guardamos el ID del usuario en el valor de la opción
+                        option.textContent = `${user.nombre} ${user.apellido} (${user.usuario})`; // Lo que se muestra al usuario
+                        userSelect.appendChild(option);
+                    });
+                    startButton.disabled = false; // Habilita el botón una vez que los usuarios están cargados
+                } catch (error) {
+                    console.error('Error al cargar usuarios:', error);
+                    userSelect.innerHTML = '<option value="">Error al cargar usuarios</option>';
+                    startButton.disabled = true; // Deshabilita el botón en caso de error
+                    errorMessage.textContent = 'No se pudieron cargar los usuarios. Verifica que el backend esté funcionando.';
+                    errorMessage.style.display = 'block';
+                }
+            }
+
+            // Cargar usuarios al cargar la página
+            loadUsers();
+
+            // Manejar el clic en el botón "EMPEZAR"
+            startButton.addEventListener('click', () => {
+                const selectedUserId = userSelect.value;
+
+                if (selectedUserId) {
+                    // Si se seleccionó un usuario, guardamos su ID en localStorage
+                    localStorage.setItem('loggedInUserId', selectedUserId);
+                    errorMessage.style.display = 'none'; // Oculta cualquier mensaje de error previo
+                    // Redirigir a la página principal del eCommerce
+                    window.location.href = 'ecommerce.html'; // Cambia esto por el nombre de tu próxima página
+                } else {
+                    // Mostrar mensaje de error si no se seleccionó un usuario
+                    errorMessage.textContent = 'Por favor, selecciona un usuario para continuar.';
+                    errorMessage.style.display = 'block';
+                }
+            });
+        });
+    </script>
+</body>
+</html>

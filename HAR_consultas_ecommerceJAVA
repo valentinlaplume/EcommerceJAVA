@@ -1,0 +1,1286 @@
+{
+	"log": {
+		"version": "1.2",
+		"creator": {
+			"name": "Insomnia REST Client",
+			"version": "insomnia.desktop.app:v11.1.0"
+		},
+		"entries": [
+			{
+				"startedDateTime": "2025-07-21T01:54:54.620Z",
+				"time": 538.245,
+				"request": {
+					"method": "GET",
+					"url": "http://localhost:8080/api/users/list",
+					"httpVersion": "HTTP/1.1",
+					"cookies": [],
+					"headers": [
+						{
+							"name": "User-Agent",
+							"value": "insomnia/11.1.0"
+						}
+					],
+					"queryString": [],
+					"postData": {
+						"mimeType": "",
+						"text": ""
+					},
+					"headersSize": -1,
+					"bodySize": -1
+				},
+				"response": {
+					"status": 200,
+					"statusText": "",
+					"httpVersion": "HTTP/1.1",
+					"cookies": [],
+					"headers": [
+						{
+							"name": "Vary",
+							"value": "Origin"
+						},
+						{
+							"name": "Vary",
+							"value": "Access-Control-Request-Method"
+						},
+						{
+							"name": "Vary",
+							"value": "Access-Control-Request-Headers"
+						},
+						{
+							"name": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"name": "Transfer-Encoding",
+							"value": "chunked"
+						},
+						{
+							"name": "Date",
+							"value": "Mon, 21 Jul 2025 00:31:05 GMT"
+						}
+					],
+					"content": {
+						"size": 218,
+						"mimeType": "application/json",
+						"text": "[{\"id\":1,\"usuario\":\"valentin.laplume\",\"nombre\":\"Valentin\",\"apellido\":\"Laplume\"},{\"id\":2,\"usuario\":\"maria.gomez\",\"nombre\":\"Maria\",\"apellido\":\"Gomez\"},{\"id\":3,\"usuario\":\"carlos.ruiz\",\"nombre\":\"Carlos\",\"apellido\":\"Ruiz\"}]"
+					},
+					"redirectURL": "",
+					"headersSize": -1,
+					"bodySize": -1
+				},
+				"cache": {},
+				"timings": {
+					"blocked": -1,
+					"dns": -1,
+					"connect": -1,
+					"send": 0,
+					"wait": 538.245,
+					"receive": 0,
+					"ssl": -1
+				},
+				"comment": "New Request"
+			},
+			{
+				"startedDateTime": "2025-07-21T01:54:54.620Z",
+				"time": 22.491,
+				"request": {
+					"method": "DELETE",
+					"url": "http://localhost:8080/api/categories/2",
+					"httpVersion": "HTTP/1.1",
+					"cookies": [],
+					"headers": [
+						{
+							"name": "User-Agent",
+							"value": "insomnia/11.1.0"
+						}
+					],
+					"queryString": [],
+					"postData": {
+						"mimeType": "",
+						"text": ""
+					},
+					"headersSize": -1,
+					"bodySize": -1
+				},
+				"response": {
+					"status": 409,
+					"statusText": "",
+					"httpVersion": "HTTP/1.1",
+					"cookies": [],
+					"headers": [
+						{
+							"name": "Vary",
+							"value": "Origin"
+						},
+						{
+							"name": "Vary",
+							"value": "Access-Control-Request-Method"
+						},
+						{
+							"name": "Vary",
+							"value": "Access-Control-Request-Headers"
+						},
+						{
+							"name": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"name": "Transfer-Encoding",
+							"value": "chunked"
+						},
+						{
+							"name": "Date",
+							"value": "Mon, 21 Jul 2025 00:24:11 GMT"
+						}
+					],
+					"content": {
+						"size": 194,
+						"mimeType": "application/json",
+						"text": "{\"timestamp\":\"2025-07-20T21:24:11.6962682\",\"status\":409,\"error\":\"Conflict\",\"message\":\"No se puede eliminar la categoría: 'Hogar' porque tiene 1 productos asociados.\",\"path\":\"/api/categories/2\"}"
+					},
+					"redirectURL": "",
+					"headersSize": -1,
+					"bodySize": -1
+				},
+				"cache": {},
+				"timings": {
+					"blocked": -1,
+					"dns": -1,
+					"connect": -1,
+					"send": 0,
+					"wait": 22.491,
+					"receive": 0,
+					"ssl": -1
+				},
+				"comment": "Eliminar"
+			},
+			{
+				"startedDateTime": "2025-07-21T01:54:54.620Z",
+				"time": 55.436,
+				"request": {
+					"method": "PUT",
+					"url": "http://localhost:8080/api/categories/6",
+					"httpVersion": "HTTP/1.1",
+					"cookies": [],
+					"headers": [
+						{
+							"name": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"name": "User-Agent",
+							"value": "insomnia/11.1.0"
+						}
+					],
+					"queryString": [],
+					"postData": {
+						"mimeType": "application/json",
+						"text": "{\"nombre\": \"Electrónica Moderna\"}"
+					},
+					"headersSize": -1,
+					"bodySize": -1
+				},
+				"response": {
+					"status": 200,
+					"statusText": "",
+					"httpVersion": "HTTP/1.1",
+					"cookies": [],
+					"headers": [
+						{
+							"name": "Vary",
+							"value": "Origin"
+						},
+						{
+							"name": "Vary",
+							"value": "Access-Control-Request-Method"
+						},
+						{
+							"name": "Vary",
+							"value": "Access-Control-Request-Headers"
+						},
+						{
+							"name": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"name": "Transfer-Encoding",
+							"value": "chunked"
+						},
+						{
+							"name": "Date",
+							"value": "Mon, 21 Jul 2025 00:02:54 GMT"
+						}
+					],
+					"content": {
+						"size": 40,
+						"mimeType": "application/json",
+						"text": "{\"id\":6,\"nombre\":\"Electrónica Moderna\"}"
+					},
+					"redirectURL": "",
+					"headersSize": -1,
+					"bodySize": -1
+				},
+				"cache": {},
+				"timings": {
+					"blocked": -1,
+					"dns": -1,
+					"connect": -1,
+					"send": 0,
+					"wait": 55.436,
+					"receive": 0,
+					"ssl": -1
+				},
+				"comment": "Editar"
+			},
+			{
+				"startedDateTime": "2025-07-21T01:54:54.620Z",
+				"time": 9.098,
+				"request": {
+					"method": "GET",
+					"url": "http://localhost:8080/api/categories/find?nombre=electro",
+					"httpVersion": "HTTP/1.1",
+					"cookies": [],
+					"headers": [
+						{
+							"name": "User-Agent",
+							"value": "insomnia/11.1.0"
+						}
+					],
+					"queryString": [],
+					"postData": {
+						"mimeType": "",
+						"text": ""
+					},
+					"headersSize": -1,
+					"bodySize": -1
+				},
+				"response": {
+					"status": 200,
+					"statusText": "",
+					"httpVersion": "HTTP/1.1",
+					"cookies": [],
+					"headers": [
+						{
+							"name": "Vary",
+							"value": "Origin"
+						},
+						{
+							"name": "Vary",
+							"value": "Access-Control-Request-Method"
+						},
+						{
+							"name": "Vary",
+							"value": "Access-Control-Request-Headers"
+						},
+						{
+							"name": "Content-Length",
+							"value": "0"
+						},
+						{
+							"name": "Date",
+							"value": "Mon, 21 Jul 2025 00:01:51 GMT"
+						}
+					],
+					"content": {
+						"size": 0,
+						"mimeType": "",
+						"text": ""
+					},
+					"redirectURL": "",
+					"headersSize": -1,
+					"bodySize": -1
+				},
+				"cache": {},
+				"timings": {
+					"blocked": -1,
+					"dns": -1,
+					"connect": -1,
+					"send": 0,
+					"wait": 9.098,
+					"receive": 0,
+					"ssl": -1
+				},
+				"comment": "Obtener por Nombre"
+			},
+			{
+				"startedDateTime": "2025-07-21T01:54:54.620Z",
+				"time": 5.0969999999999995,
+				"request": {
+					"method": "GET",
+					"url": "http://localhost:8080/api/categories/1",
+					"httpVersion": "HTTP/1.1",
+					"cookies": [],
+					"headers": [
+						{
+							"name": "User-Agent",
+							"value": "insomnia/11.1.0"
+						}
+					],
+					"queryString": [],
+					"postData": {
+						"mimeType": "",
+						"text": ""
+					},
+					"headersSize": -1,
+					"bodySize": -1
+				},
+				"response": {
+					"status": 200,
+					"statusText": "",
+					"httpVersion": "HTTP/1.1",
+					"cookies": [],
+					"headers": [
+						{
+							"name": "Vary",
+							"value": "Origin"
+						},
+						{
+							"name": "Vary",
+							"value": "Access-Control-Request-Method"
+						},
+						{
+							"name": "Vary",
+							"value": "Access-Control-Request-Headers"
+						},
+						{
+							"name": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"name": "Transfer-Encoding",
+							"value": "chunked"
+						},
+						{
+							"name": "Date",
+							"value": "Mon, 21 Jul 2025 00:01:48 GMT"
+						}
+					],
+					"content": {
+						"size": 31,
+						"mimeType": "application/json",
+						"text": "{\"id\":1,\"nombre\":\"Tecnología\"}"
+					},
+					"redirectURL": "",
+					"headersSize": -1,
+					"bodySize": -1
+				},
+				"cache": {},
+				"timings": {
+					"blocked": -1,
+					"dns": -1,
+					"connect": -1,
+					"send": 0,
+					"wait": 5.0969999999999995,
+					"receive": 0,
+					"ssl": -1
+				},
+				"comment": "Obtener por ID"
+			},
+			{
+				"startedDateTime": "2025-07-21T01:54:54.620Z",
+				"time": 370.347,
+				"request": {
+					"method": "GET",
+					"url": "http://localhost:8080/api/categories/list",
+					"httpVersion": "HTTP/1.1",
+					"cookies": [],
+					"headers": [
+						{
+							"name": "User-Agent",
+							"value": "insomnia/11.1.0"
+						}
+					],
+					"queryString": [],
+					"postData": {
+						"mimeType": "",
+						"text": ""
+					},
+					"headersSize": -1,
+					"bodySize": -1
+				},
+				"response": {
+					"status": 200,
+					"statusText": "",
+					"httpVersion": "HTTP/1.1",
+					"cookies": [],
+					"headers": [
+						{
+							"name": "Vary",
+							"value": "Origin"
+						},
+						{
+							"name": "Vary",
+							"value": "Access-Control-Request-Method"
+						},
+						{
+							"name": "Vary",
+							"value": "Access-Control-Request-Headers"
+						},
+						{
+							"name": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"name": "Transfer-Encoding",
+							"value": "chunked"
+						},
+						{
+							"name": "Date",
+							"value": "Mon, 21 Jul 2025 00:09:19 GMT"
+						}
+					],
+					"content": {
+						"size": 148,
+						"mimeType": "application/json",
+						"text": "[{\"id\":1,\"nombre\":\"Tecnología\"},{\"id\":2,\"nombre\":\"Hogar\"},{\"id\":3,\"nombre\":\"Oficina\"},{\"id\":4,\"nombre\":\"Accesorios\"},{\"id\":5,\"nombre\":\"Alimentos\"}]"
+					},
+					"redirectURL": "",
+					"headersSize": -1,
+					"bodySize": -1
+				},
+				"cache": {},
+				"timings": {
+					"blocked": -1,
+					"dns": -1,
+					"connect": -1,
+					"send": 0,
+					"wait": 370.347,
+					"receive": 0,
+					"ssl": -1
+				},
+				"comment": "listar"
+			},
+			{
+				"startedDateTime": "2025-07-21T01:54:54.620Z",
+				"time": 464.86899999999997,
+				"request": {
+					"method": "POST",
+					"url": "http://localhost:8080/api/categories",
+					"httpVersion": "HTTP/1.1",
+					"cookies": [],
+					"headers": [
+						{
+							"name": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"name": "User-Agent",
+							"value": "insomnia/11.1.0"
+						}
+					],
+					"queryString": [],
+					"postData": {
+						"mimeType": "application/json",
+						"text": "{\"nombre\": \"Electrónica\"}"
+					},
+					"headersSize": -1,
+					"bodySize": -1
+				},
+				"response": {
+					"status": 201,
+					"statusText": "",
+					"httpVersion": "HTTP/1.1",
+					"cookies": [],
+					"headers": [
+						{
+							"name": "Vary",
+							"value": "Origin"
+						},
+						{
+							"name": "Vary",
+							"value": "Access-Control-Request-Method"
+						},
+						{
+							"name": "Vary",
+							"value": "Access-Control-Request-Headers"
+						},
+						{
+							"name": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"name": "Transfer-Encoding",
+							"value": "chunked"
+						},
+						{
+							"name": "Date",
+							"value": "Mon, 21 Jul 2025 00:00:16 GMT"
+						}
+					],
+					"content": {
+						"size": 32,
+						"mimeType": "application/json",
+						"text": "{\"id\":6,\"nombre\":\"Electrónica\"}"
+					},
+					"redirectURL": "",
+					"headersSize": -1,
+					"bodySize": -1
+				},
+				"cache": {},
+				"timings": {
+					"blocked": -1,
+					"dns": -1,
+					"connect": -1,
+					"send": 0,
+					"wait": 464.86899999999997,
+					"receive": 0,
+					"ssl": -1
+				},
+				"comment": "Nuevo"
+			},
+			{
+				"startedDateTime": "2025-07-21T01:54:54.620Z",
+				"time": 376.452,
+				"request": {
+					"method": "GET",
+					"url": "http://localhost:8080/api/pedidos/1",
+					"httpVersion": "HTTP/1.1",
+					"cookies": [],
+					"headers": [
+						{
+							"name": "User-Agent",
+							"value": "insomnia/11.1.0"
+						}
+					],
+					"queryString": [],
+					"postData": {
+						"mimeType": "",
+						"text": ""
+					},
+					"headersSize": -1,
+					"bodySize": -1
+				},
+				"response": {
+					"status": 200,
+					"statusText": "",
+					"httpVersion": "HTTP/1.1",
+					"cookies": [],
+					"headers": [
+						{
+							"name": "Vary",
+							"value": "Origin"
+						},
+						{
+							"name": "Vary",
+							"value": "Access-Control-Request-Method"
+						},
+						{
+							"name": "Vary",
+							"value": "Access-Control-Request-Headers"
+						},
+						{
+							"name": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"name": "Transfer-Encoding",
+							"value": "chunked"
+						},
+						{
+							"name": "Date",
+							"value": "Sun, 20 Jul 2025 23:31:21 GMT"
+						}
+					],
+					"content": {
+						"size": 430,
+						"mimeType": "application/json",
+						"text": "{\"id\":1,\"idUsuario\":1,\"itemsPedido\":[{\"id\":1,\"idProducto\":1,\"nombreProducto\":\"Monitor\",\"cantidad\":2,\"precioUnitario\":1000.0},{\"id\":2,\"idProducto\":3,\"nombreProducto\":\"Teclado mecánico\",\"cantidad\":1,\"precioUnitario\":1500.0},{\"id\":3,\"idProducto\":10,\"nombreProducto\":\"Power Bank 10000mAh\",\"cantidad\":3,\"precioUnitario\":800.0}],\"fechaCreacion\":\"2025-07-20T10:00:00\",\"total\":5900.0,\"idEstado\":2,\"estado\":{\"id\":2,\"nombre\":\"CONFIRMADO\"}}"
+					},
+					"redirectURL": "",
+					"headersSize": -1,
+					"bodySize": -1
+				},
+				"cache": {},
+				"timings": {
+					"blocked": -1,
+					"dns": -1,
+					"connect": -1,
+					"send": 0,
+					"wait": 376.452,
+					"receive": 0,
+					"ssl": -1
+				},
+				"comment": "Obtener uno Por ID"
+			},
+			{
+				"startedDateTime": "2025-07-21T01:54:54.620Z",
+				"time": 17.456,
+				"request": {
+					"method": "GET",
+					"url": "http://localhost:8080/api/usuarios/1/pedidos",
+					"httpVersion": "HTTP/1.1",
+					"cookies": [],
+					"headers": [
+						{
+							"name": "User-Agent",
+							"value": "insomnia/11.1.0"
+						}
+					],
+					"queryString": [],
+					"postData": {
+						"mimeType": "",
+						"text": ""
+					},
+					"headersSize": -1,
+					"bodySize": -1
+				},
+				"response": {
+					"status": 200,
+					"statusText": "",
+					"httpVersion": "HTTP/1.1",
+					"cookies": [],
+					"headers": [
+						{
+							"name": "Vary",
+							"value": "Origin"
+						},
+						{
+							"name": "Vary",
+							"value": "Access-Control-Request-Method"
+						},
+						{
+							"name": "Vary",
+							"value": "Access-Control-Request-Headers"
+						},
+						{
+							"name": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"name": "Transfer-Encoding",
+							"value": "chunked"
+						},
+						{
+							"name": "Date",
+							"value": "Mon, 21 Jul 2025 01:42:59 GMT"
+						}
+					],
+					"content": {
+						"size": 1090,
+						"mimeType": "application/json",
+						"text": "[{\"id\":1,\"idUsuario\":1,\"itemsPedido\":[{\"id\":1,\"idProducto\":1,\"nombreProducto\":\"Monitor\",\"cantidad\":2,\"precioUnitario\":1000.0},{\"id\":2,\"idProducto\":3,\"nombreProducto\":\"Teclado mecánico\",\"cantidad\":1,\"precioUnitario\":1500.0},{\"id\":3,\"idProducto\":10,\"nombreProducto\":\"Power Bank 10000mAh\",\"cantidad\":3,\"precioUnitario\":800.0}],\"fechaCreacion\":\"2025-07-20T10:00:00\",\"total\":5900.0,\"idEstado\":2,\"estado\":{\"id\":2,\"nombre\":\"CONFIRMADO\"}},{\"id\":3,\"idUsuario\":1,\"itemsPedido\":[{\"id\":6,\"idProducto\":6,\"nombreProducto\":\"Smartphone\",\"cantidad\":1,\"precioUnitario\":12000.0},{\"id\":7,\"idProducto\":2,\"nombreProducto\":\"Micrófono\",\"cantidad\":1,\"precioUnitario\":2000.0}],\"fechaCreacion\":\"2025-07-19T15:45:00\",\"total\":14000.0,\"idEstado\":3,\"estado\":{\"id\":3,\"nombre\":\"ENVIADO\"}},{\"id\":4,\"idUsuario\":1,\"itemsPedido\":[{\"id\":8,\"idProducto\":6,\"nombreProducto\":\"Smartphone\",\"cantidad\":1,\"precioUnitario\":12000.0},{\"id\":9,\"idProducto\":5,\"nombreProducto\":\"Laptop\",\"cantidad\":1,\"precioUnitario\":15000.0}],\"fechaCreacion\":\"2025-07-20T22:38:33.054321\",\"total\":27000.0,\"idEstado\":1,\"estado\":{\"id\":1,\"nombre\":\"PENDIENTE\"}}]"
+					},
+					"redirectURL": "",
+					"headersSize": -1,
+					"bodySize": -1
+				},
+				"cache": {},
+				"timings": {
+					"blocked": -1,
+					"dns": -1,
+					"connect": -1,
+					"send": 0,
+					"wait": 17.456,
+					"receive": 0,
+					"ssl": -1
+				},
+				"comment": "Obtener Pedidos Por ID Usuario"
+			},
+			{
+				"startedDateTime": "2025-07-21T01:54:54.620Z",
+				"time": 78.899,
+				"request": {
+					"method": "POST",
+					"url": "http://localhost:8080/api/pedidos",
+					"httpVersion": "HTTP/1.1",
+					"cookies": [],
+					"headers": [
+						{
+							"name": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"name": "User-Agent",
+							"value": "insomnia/11.1.0"
+						}
+					],
+					"queryString": [],
+					"postData": {
+						"mimeType": "application/json",
+						"text": "{\n  \"idUsuario\": 3,\n  \"itemsPedido\": [\n    { \"idProducto\": 6, \"cantidad\": 999 },\n    { \"idProducto\": 9, \"cantidad\": 1 }\n  ]\n}"
+					},
+					"headersSize": -1,
+					"bodySize": -1
+				},
+				"response": {
+					"status": 400,
+					"statusText": "",
+					"httpVersion": "HTTP/1.1",
+					"cookies": [],
+					"headers": [
+						{
+							"name": "Vary",
+							"value": "Origin"
+						},
+						{
+							"name": "Vary",
+							"value": "Access-Control-Request-Method"
+						},
+						{
+							"name": "Vary",
+							"value": "Access-Control-Request-Headers"
+						},
+						{
+							"name": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"name": "Transfer-Encoding",
+							"value": "chunked"
+						},
+						{
+							"name": "Date",
+							"value": "Sun, 20 Jul 2025 23:29:22 GMT"
+						},
+						{
+							"name": "Connection",
+							"value": "close"
+						}
+					],
+					"content": {
+						"size": 198,
+						"mimeType": "application/json",
+						"text": "{\"timestamp\":\"2025-07-20T20:29:22.1291947\",\"status\":400,\"error\":\"Bad Request\",\"message\":\"Stock insuficiente para el producto: Smartphone. Stock disponible: 8, solicitado: 999\",\"path\":\"/api/pedidos\"}"
+					},
+					"redirectURL": "",
+					"headersSize": -1,
+					"bodySize": -1
+				},
+				"cache": {},
+				"timings": {
+					"blocked": -1,
+					"dns": -1,
+					"connect": -1,
+					"send": 0,
+					"wait": 78.899,
+					"receive": 0,
+					"ssl": -1
+				},
+				"comment": "Nuevo"
+			},
+			{
+				"startedDateTime": "2025-07-21T01:54:54.620Z",
+				"time": 118.851,
+				"request": {
+					"method": "GET",
+					"url": "http://localhost:8080/h2-console",
+					"httpVersion": "HTTP/1.1",
+					"cookies": [],
+					"headers": [
+						{
+							"name": "User-Agent",
+							"value": "insomnia/11.1.0"
+						}
+					],
+					"queryString": [],
+					"postData": {
+						"mimeType": "",
+						"text": ""
+					},
+					"headersSize": -1,
+					"bodySize": -1
+				},
+				"response": {
+					"status": 200,
+					"statusText": "",
+					"httpVersion": "HTTP/1.1",
+					"cookies": [],
+					"headers": [
+						{
+							"name": "Cache-Control",
+							"value": "no-cache"
+						},
+						{
+							"name": "Content-Type",
+							"value": "text/html"
+						},
+						{
+							"name": "Content-Length",
+							"value": "938"
+						},
+						{
+							"name": "Date",
+							"value": "Sun, 20 Jul 2025 23:17:38 GMT"
+						}
+					],
+					"content": {
+						"size": 938,
+						"mimeType": "text/html",
+						"text": "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.01 Transitional//EN\" \"http://www.w3.org/TR/html4/loose.dtd\">\n<!--\nCopyright 2004-2024 H2 Group. Multiple-Licensed under the MPL 2.0,\nand the EPL 1.0 (https://h2database.com/html/license.html).\nInitial Developer: H2 Group\n-->\n<html><head>\n    <meta http-equiv=\"Content-Type\" content=\"text/html;charset=utf-8\" />\n    <title>H2 Console</title>\n    <link rel=\"stylesheet\" type=\"text/css\" href=\"stylesheet.css\" />\n<script type=\"text/javascript\">\nlocation.href = 'login.jsp?jsessionid=f34f280f779b8975ba4ce210fd43fc71';\n</script>\n</head>\n<body style=\"margin: 20px;\">\n\n<h1>Welcome to H2</h1>\n<h2>No Javascript</h2>\nIf you are not automatically redirected to the login page, then\nJavascript is currently disabled or your browser does not support Javascript.\nFor this application to work, Javascript is essential.\nPlease enable Javascript now, or use another web browser that supports it.\n\n</body></html>\n"
+					},
+					"redirectURL": "",
+					"headersSize": -1,
+					"bodySize": -1
+				},
+				"cache": {},
+				"timings": {
+					"blocked": -1,
+					"dns": -1,
+					"connect": -1,
+					"send": 0,
+					"wait": 118.851,
+					"receive": 0,
+					"ssl": -1
+				},
+				"comment": "CONSOLA BASE DE DATOS"
+			},
+			{
+				"startedDateTime": "2025-07-21T01:54:54.620Z",
+				"time": 74.926,
+				"request": {
+					"method": "POST",
+					"url": "http://localhost:8080/api/products",
+					"httpVersion": "HTTP/1.1",
+					"cookies": [],
+					"headers": [
+						{
+							"name": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"name": "User-Agent",
+							"value": "insomnia/11.1.0"
+						}
+					],
+					"queryString": [],
+					"postData": {
+						"mimeType": "application/json",
+						"text": "{\n  \"nombre\": \"Kit de Limpieza para PC\",\n  \"precio\": 2,\n  \"stock\": 75,\n  \"descripcion\": \"Kit completo para mantener tu computadora impecable, incluye aire comprimido, paño de microfibra y cepillos antiestáticos.\",\n  \"idCategoria\": 99\n}"
+					},
+					"headersSize": -1,
+					"bodySize": -1
+				},
+				"response": {
+					"status": 400,
+					"statusText": "",
+					"httpVersion": "HTTP/1.1",
+					"cookies": [],
+					"headers": [
+						{
+							"name": "Vary",
+							"value": "Origin"
+						},
+						{
+							"name": "Vary",
+							"value": "Access-Control-Request-Method"
+						},
+						{
+							"name": "Vary",
+							"value": "Access-Control-Request-Headers"
+						},
+						{
+							"name": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"name": "Transfer-Encoding",
+							"value": "chunked"
+						},
+						{
+							"name": "Date",
+							"value": "Sun, 20 Jul 2025 23:55:56 GMT"
+						},
+						{
+							"name": "Connection",
+							"value": "close"
+						}
+					],
+					"content": {
+						"size": 149,
+						"mimeType": "application/json",
+						"text": "{\"timestamp\":\"2025-07-20T20:55:56.8930214\",\"status\":400,\"error\":\"Bad Request\",\"message\":\"Categoría no encontrada con ID: 99\",\"path\":\"/api/products\"}"
+					},
+					"redirectURL": "",
+					"headersSize": -1,
+					"bodySize": -1
+				},
+				"cache": {},
+				"timings": {
+					"blocked": -1,
+					"dns": -1,
+					"connect": -1,
+					"send": 0,
+					"wait": 74.926,
+					"receive": 0,
+					"ssl": -1
+				},
+				"comment": "nuevo"
+			},
+			{
+				"startedDateTime": "2025-07-21T01:54:54.620Z",
+				"time": 9.844000000000001,
+				"request": {
+					"method": "PUT",
+					"url": "http://localhost:8080/api/products/1",
+					"httpVersion": "HTTP/1.1",
+					"cookies": [],
+					"headers": [
+						{
+							"name": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"name": "User-Agent",
+							"value": "insomnia/11.1.0"
+						}
+					],
+					"queryString": [],
+					"postData": {
+						"mimeType": "application/json",
+						"text": "{\n  \"nombre\": \"Monitor Gamer Ultra HD\",\n  \"precio\": 1250.00,\n  \"stock\": 8,\n  \"descripcion\": \"Monitor de alta resolución 4K para una experiencia de juego inmersiva. 144Hz.\",\n  \"idCategoria\": 1\n}"
+					},
+					"headersSize": -1,
+					"bodySize": -1
+				},
+				"response": {
+					"status": 200,
+					"statusText": "",
+					"httpVersion": "HTTP/1.1",
+					"cookies": [],
+					"headers": [
+						{
+							"name": "Vary",
+							"value": "Origin"
+						},
+						{
+							"name": "Vary",
+							"value": "Access-Control-Request-Method"
+						},
+						{
+							"name": "Vary",
+							"value": "Access-Control-Request-Headers"
+						},
+						{
+							"name": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"name": "Transfer-Encoding",
+							"value": "chunked"
+						},
+						{
+							"name": "Date",
+							"value": "Sun, 20 Jul 2025 22:31:09 GMT"
+						}
+					],
+					"content": {
+						"size": 223,
+						"mimeType": "application/json",
+						"text": "{\"id\":1,\"nombre\":\"Monitor Gamer Ultra HD\",\"precio\":1250.0,\"stock\":8,\"descripcion\":\"Monitor de alta resolución 4K para una experiencia de juego inmersiva. 144Hz.\",\"idCategoria\":1,\"categoria\":{\"id\":1,\"nombre\":\"Tecnología\"}}"
+					},
+					"redirectURL": "",
+					"headersSize": -1,
+					"bodySize": -1
+				},
+				"cache": {},
+				"timings": {
+					"blocked": -1,
+					"dns": -1,
+					"connect": -1,
+					"send": 0,
+					"wait": 9.844000000000001,
+					"receive": 0,
+					"ssl": -1
+				},
+				"comment": "Editar"
+			},
+			{
+				"startedDateTime": "2025-07-21T01:54:54.620Z",
+				"time": 102.73500000000001,
+				"request": {
+					"method": "GET",
+					"url": "http://localhost:8080/api/products/list",
+					"httpVersion": "HTTP/1.1",
+					"cookies": [],
+					"headers": [
+						{
+							"name": "User-Agent",
+							"value": "insomnia/11.1.0"
+						}
+					],
+					"queryString": [],
+					"postData": {
+						"mimeType": "",
+						"text": ""
+					},
+					"headersSize": -1,
+					"bodySize": -1
+				},
+				"response": {
+					"status": 200,
+					"statusText": "",
+					"httpVersion": "HTTP/1.1",
+					"cookies": [],
+					"headers": [
+						{
+							"name": "Vary",
+							"value": "Origin"
+						},
+						{
+							"name": "Vary",
+							"value": "Access-Control-Request-Method"
+						},
+						{
+							"name": "Vary",
+							"value": "Access-Control-Request-Headers"
+						},
+						{
+							"name": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"name": "Transfer-Encoding",
+							"value": "chunked"
+						},
+						{
+							"name": "Date",
+							"value": "Sun, 20 Jul 2025 23:31:26 GMT"
+						}
+					],
+					"content": {
+						"size": 2054,
+						"mimeType": "application/json",
+						"text": "[{\"id\":1,\"nombre\":\"Monitor\",\"precio\":1000.0,\"stock\":10,\"descripcion\":\"Monitor de alta resolución para gaming.\",\"idCategoria\":1,\"categoria\":{\"id\":1,\"nombre\":\"Tecnología\"}},{\"id\":2,\"nombre\":\"Micrófono\",\"precio\":2000.0,\"stock\":10,\"descripcion\":\"Micrófono profesional para streaming.\",\"idCategoria\":1,\"categoria\":{\"id\":1,\"nombre\":\"Tecnología\"}},{\"id\":3,\"nombre\":\"Teclado mecánico\",\"precio\":1500.0,\"stock\":15,\"descripcion\":\"Teclado con switches mecánicos y retroiluminación RGB.\",\"idCategoria\":1,\"categoria\":{\"id\":1,\"nombre\":\"Tecnología\"}},{\"id\":4,\"nombre\":\"Mouse gamer\",\"precio\":1200.0,\"stock\":20,\"descripcion\":\"Mouse ergonómico con alta precisión y botones programables.\",\"idCategoria\":1,\"categoria\":{\"id\":1,\"nombre\":\"Tecnología\"}},{\"id\":5,\"nombre\":\"Laptop\",\"precio\":15000.0,\"stock\":5,\"descripcion\":\"Laptop potente para trabajo y entretenimiento.\",\"idCategoria\":1,\"categoria\":{\"id\":1,\"nombre\":\"Tecnología\"}},{\"id\":6,\"nombre\":\"Smartphone\",\"precio\":12000.0,\"stock\":8,\"descripcion\":\"Smartphone con cámara de alta resolución.\",\"idCategoria\":1,\"categoria\":{\"id\":1,\"nombre\":\"Tecnología\"}},{\"id\":7,\"nombre\":\"Impresora Multifunción\",\"precio\":4000.0,\"stock\":6,\"descripcion\":\"Impresora, copiadora y escáner para oficina.\",\"idCategoria\":3,\"categoria\":{\"id\":3,\"nombre\":\"Oficina\"}},{\"id\":8,\"nombre\":\"Cafetera Eléctrica\",\"precio\":1500.0,\"stock\":10,\"descripcion\":\"Cafetera programable con filtro permanente.\",\"idCategoria\":2,\"categoria\":{\"id\":2,\"nombre\":\"Hogar\"}},{\"id\":9,\"nombre\":\"Mochila para Laptop\",\"precio\":1200.0,\"stock\":20,\"descripcion\":\"Mochila resistente al agua con compartimento para laptop.\",\"idCategoria\":4,\"categoria\":{\"id\":4,\"nombre\":\"Accesorios\"}},{\"id\":10,\"nombre\":\"Power Bank 10000mAh\",\"precio\":800.0,\"stock\":30,\"descripcion\":\"Batería externa portátil para cargar dispositivos móviles.\",\"idCategoria\":4,\"categoria\":{\"id\":4,\"nombre\":\"Accesorios\"}},{\"id\":11,\"nombre\":\"Café Molido Premium 250g\",\"precio\":350.0,\"stock\":100,\"descripcion\":\"Café 100% arábica de tueste medio.\",\"idCategoria\":5,\"categoria\":{\"id\":5,\"nombre\":\"Alimentos\"}}]"
+					},
+					"redirectURL": "",
+					"headersSize": -1,
+					"bodySize": -1
+				},
+				"cache": {},
+				"timings": {
+					"blocked": -1,
+					"dns": -1,
+					"connect": -1,
+					"send": 0,
+					"wait": 102.73500000000001,
+					"receive": 0,
+					"ssl": -1
+				},
+				"comment": "listar todos"
+			},
+			{
+				"startedDateTime": "2025-07-21T01:54:54.620Z",
+				"time": 9.508000000000001,
+				"request": {
+					"method": "GET",
+					"url": "http://localhost:8080/api/products/30",
+					"httpVersion": "HTTP/1.1",
+					"cookies": [],
+					"headers": [
+						{
+							"name": "User-Agent",
+							"value": "insomnia/11.1.0"
+						}
+					],
+					"queryString": [],
+					"postData": {
+						"mimeType": "",
+						"text": ""
+					},
+					"headersSize": -1,
+					"bodySize": -1
+				},
+				"response": {
+					"status": 200,
+					"statusText": "",
+					"httpVersion": "HTTP/1.1",
+					"cookies": [],
+					"headers": [
+						{
+							"name": "Vary",
+							"value": "Origin"
+						},
+						{
+							"name": "Vary",
+							"value": "Access-Control-Request-Method"
+						},
+						{
+							"name": "Vary",
+							"value": "Access-Control-Request-Headers"
+						},
+						{
+							"name": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"name": "Transfer-Encoding",
+							"value": "chunked"
+						},
+						{
+							"name": "Date",
+							"value": "Sun, 20 Jul 2025 22:30:59 GMT"
+						}
+					],
+					"content": {
+						"size": 201,
+						"mimeType": "application/json",
+						"text": "{\"id\":30,\"nombre\":\"Chocolates Artesanales (Caja de 6)\",\"precio\":500.0,\"stock\":40,\"descripcion\":\"Selección de chocolates finos hechos a mano.\",\"idCategoria\":5,\"categoria\":{\"id\":5,\"nombre\":\"Alimentos\"}}"
+					},
+					"redirectURL": "",
+					"headersSize": -1,
+					"bodySize": -1
+				},
+				"cache": {},
+				"timings": {
+					"blocked": -1,
+					"dns": -1,
+					"connect": -1,
+					"send": 0,
+					"wait": 9.508000000000001,
+					"receive": 0,
+					"ssl": -1
+				},
+				"comment": "Obtener por ID"
+			},
+			{
+				"startedDateTime": "2025-07-21T01:54:54.620Z",
+				"time": 70.802,
+				"request": {
+					"method": "GET",
+					"url": "http://localhost:8080/api/products/find",
+					"httpVersion": "HTTP/1.1",
+					"cookies": [],
+					"headers": [
+						{
+							"name": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"name": "User-Agent",
+							"value": "insomnia/11.1.0"
+						}
+					],
+					"queryString": [
+						{
+							"name": "nombreBusqueda",
+							"value": "teclado"
+						}
+					],
+					"postData": {
+						"mimeType": "application/json",
+						"text": ""
+					},
+					"headersSize": -1,
+					"bodySize": -1
+				},
+				"response": {
+					"status": 200,
+					"statusText": "",
+					"httpVersion": "HTTP/1.1",
+					"cookies": [],
+					"headers": [
+						{
+							"name": "Vary",
+							"value": "Origin"
+						},
+						{
+							"name": "Vary",
+							"value": "Access-Control-Request-Method"
+						},
+						{
+							"name": "Vary",
+							"value": "Access-Control-Request-Headers"
+						},
+						{
+							"name": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"name": "Transfer-Encoding",
+							"value": "chunked"
+						},
+						{
+							"name": "Date",
+							"value": "Sun, 20 Jul 2025 22:31:15 GMT"
+						}
+					],
+					"content": {
+						"size": 199,
+						"mimeType": "application/json",
+						"text": "[{\"id\":3,\"nombre\":\"Teclado mecánico\",\"precio\":1500.0,\"stock\":15,\"descripcion\":\"Teclado con switches mecánicos y retroiluminación RGB.\",\"idCategoria\":1,\"categoria\":{\"id\":1,\"nombre\":\"Tecnología\"}}]"
+					},
+					"redirectURL": "",
+					"headersSize": -1,
+					"bodySize": -1
+				},
+				"cache": {},
+				"timings": {
+					"blocked": -1,
+					"dns": -1,
+					"connect": -1,
+					"send": 0,
+					"wait": 70.802,
+					"receive": 0,
+					"ssl": -1
+				},
+				"comment": "Obtener por Nombre"
+			},
+			{
+				"startedDateTime": "2025-07-21T01:54:54.620Z",
+				"time": 585.474,
+				"request": {
+					"method": "DELETE",
+					"url": "http://localhost:8080/api/products/31",
+					"httpVersion": "HTTP/1.1",
+					"cookies": [],
+					"headers": [
+						{
+							"name": "User-Agent",
+							"value": "insomnia/11.1.0"
+						}
+					],
+					"queryString": [],
+					"postData": {
+						"mimeType": "",
+						"text": ""
+					},
+					"headersSize": -1,
+					"bodySize": -1
+				},
+				"response": {
+					"status": 204,
+					"statusText": "",
+					"httpVersion": "HTTP/1.1",
+					"cookies": [],
+					"headers": [
+						{
+							"name": "Vary",
+							"value": "Origin"
+						},
+						{
+							"name": "Vary",
+							"value": "Access-Control-Request-Method"
+						},
+						{
+							"name": "Vary",
+							"value": "Access-Control-Request-Headers"
+						},
+						{
+							"name": "Date",
+							"value": "Sun, 20 Jul 2025 22:31:25 GMT"
+						}
+					],
+					"content": {
+						"size": 0,
+						"mimeType": "",
+						"text": ""
+					},
+					"redirectURL": "",
+					"headersSize": -1,
+					"bodySize": -1
+				},
+				"cache": {},
+				"timings": {
+					"blocked": -1,
+					"dns": -1,
+					"connect": -1,
+					"send": 0,
+					"wait": 585.474,
+					"receive": 0,
+					"ssl": -1
+				},
+				"comment": "Eliminar"
+			}
+		]
+	}
+}

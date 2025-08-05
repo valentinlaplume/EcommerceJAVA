@@ -1,0 +1,455 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tienda y Carrito de Compras</title>
+    <link rel="stylesheet" href="css/styles.css"> <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+         /* Estilos generales (pueden ser los mismos que en productos.html) */
+         body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: #f4f4f4;
+            color: #333;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .container {
+            background-color: #fff;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            color: #0056b3;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        .message {
+            padding: 10px;
+            margin-bottom: 20px;
+            border-radius: 5px;
+            text-align: center;
+        }
+        .success {
+            background-color: #d4edda;
+            color: #155724;
+            border: 1px solid #c3e6cb;
+        }
+        .error {
+            background-color: #f8d7da;
+            color: #721c24;
+            border: 1px solid #f5c6cb;
+        }
+        /* Estilos generales */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0; /* Padding general se maneja en el container */
+            background-color: #f4f4f4;
+            color: #333;
+        }
+               /* Navegación (igual que en productos.html) */
+               .navbar {
+            display: flex;
+            justify-content: center;
+            background-color: #333;
+            padding: 10px 0;
+            border-radius: 5px;
+            margin-bottom: 20px;
+            width: 90%;
+            max-width: 1200px;
+        }
+        .navbar a {
+            color: white;
+            padding: 10px 20px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: background-color 0.3s ease;
+        }
+        .navbar a:hover {
+            background-color: #575757;
+            border-radius: 5px;
+        }
+        .navbar a.active {
+            background-color: #007bff;
+            border-radius: 5px;
+        }
+
+        /* Contenedor principal de la página */
+        .page-container {
+            background-color: #fff;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            width: 95%; /* Ocupa más ancho */
+            max-width: 1400px; /* Ancho máximo para pantallas grandes */
+            margin: 20px auto; /* Centrado y con margen superior/inferior */
+        }
+        h1 {
+            color: #0056b3;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        .message-area {
+            padding: 10px;
+            margin-bottom: 20px;
+            border-radius: 5px;
+            text-align: center;
+            display: none; /* Oculto por defecto, visible con JS */
+        }
+        .message-area.success { background-color: #d4edda; color: #155724; border: 1px solid #c3e6cb; }
+        .message-area.error { background-color: #f8d7da; color: #721c24; border: 1px solid #f5c6cb; }
+        .message-area.info { background-color: #d1ecf1; color: #0c5460; border: 1px solid #bee5eb; }
+
+        /* Contenido principal: Productos (izquierda) y Carrito (derecha) */
+        .main-content-shop {
+            display: flex;
+            flex-wrap: wrap; /* Permite que las columnas se apilen */
+            gap: 30px; /* Espacio entre las columnas */
+            justify-content: center;
+        }
+
+        .products-section, .cart-section {
+            background-color: #fcfcfc;
+            padding: 25px;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+            flex: 1; /* Permite que las secciones crezcan y se encojan */
+            min-width: 300px; /* Ancho mínimo para columnas */
+            max-height: 600px;
+            overflow-y: auto;
+        }
+        .products-section {
+            flex-basis: 65%; /* La sección de productos ocupa la mayor parte */
+            max-width: 50%;
+        }
+        .cart-section {
+            flex-basis: 30%; /* La sección del carrito es más pequeña */
+        }
+
+        /* Grid de Productos (2 productos por fila con Bootstrap) */
+        .products-grid-container {
+            margin-top: 10px;
+        }
+        .products-grid-container .card {
+            width: 100%; /* Las cards se ajustan al col */
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            transition: transform 0.2s ease-in-out;
+        }
+        .products-grid-container .card:hover {
+            transform: translateY(-3px);
+        }
+        .products-grid-container .card-img-top {
+            height: 180px; /* Altura fija para la imagen */
+            object-fit: cover;
+            border-top-left-radius: 8px;
+            border-top-right-radius: 8px;
+        }
+        .products-grid-container .card-body {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+        .products-grid-container .card-title {
+            font-size: 1.25em;
+            color: #0056b3;
+            margin-bottom: 5px;
+        }
+        .products-grid-container .card-text-description {
+            font-size: 0.85em;
+            color: #666;
+            margin-bottom: 10px;
+            max-height: 50px; /* Limita la altura para la descripción */
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+        .products-grid-container .product-price {
+            font-weight: bold;
+            color: #28a745;
+            font-size: 1.15em;
+            margin-top: 10px;
+        }
+        .products-grid-container .add-to-cart-btn {
+            margin-top: auto; /* Empuja el botón hacia abajo */
+        }
+
+        /* Tabla del Carrito */
+        .cart-table-container {
+            overflow-x: auto;
+            margin-bottom: 20px;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+        table th, table td {
+            border: 1px solid #ddd;
+            padding: 10px;
+            text-align: left;
+            vertical-align: middle; /* Alineación vertical */
+        }
+        table th {
+            background-color: #007bff;
+            color: white;
+            white-space: nowrap;
+        }
+        table tbody tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+        table tbody tr:hover {
+            background-color: #e9e9e9;
+        }
+        .quantity-input {
+            width: 55px; /* Más compacto */
+            padding: 4px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            text-align: center;
+        }
+        .quantity-controls {
+            display: flex;
+            align-items: center;
+            gap: 2px; /* Espacio entre botones y input */
+        }
+        .quantity-controls .btn-sm {
+            width: 28px;
+            height: 28px;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 1rem;
+        }
+        .remove-btn {
+            background-color: #dc3545;
+            color: white;
+            border: none;
+            padding: 6px 10px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            font-size: 0.85em;
+        }
+        .remove-btn:hover {
+            background-color: #c82333;
+        }
+
+        /* Resumen del Carrito y Botones */
+        .cart-summary {
+            text-align: right;
+            margin-top: 20px;
+            font-size: 1.3em;
+            font-weight: bold;
+            color: #007bff;
+        }
+        .cart-actions {
+            display: flex;
+            justify-content: flex-end;
+            margin-top: 20px;
+            gap: 10px;
+        }
+        .btn {
+            padding: 10px 20px;
+            font-size: 1em;
+            border-radius: 5px;
+        }
+        .btn-success { background-color: #28a745; }
+        .btn-success:hover { background-color: #218838; }
+        .btn-primary:hover { background-color: #0056b3; }
+        .btn-clear { background-color: #6c757d; }
+        .btn-clear:hover { background-color: #5a6268; }
+
+        /* Modal de Compra Exitosa (copiado de tu ejemplo) */
+        .modal-body .text-success { font-size: 4rem; }
+
+        /* Media queries para responsividad */
+        @media (max-width: 992px) { /* Para tabletas y móviles, apilar columnas */
+            .main-content-shop {
+                flex-direction: column;
+                align-items: center;
+            }
+            .products-section, .cart-section {
+                width: 100%;
+                max-width: 700px; /* Limita el ancho para que no sea demasiado largo */
+                flex-basis: auto;
+            }
+             /* En móviles, 1 producto por fila */
+            .products-grid-container .col-sm-6,
+            .products-grid-container .col-md-6 {
+                flex: 0 0 auto; /* Ajuste para que ocupe todo el ancho */
+                width: 100%;
+            }
+             .products-grid-container .col-6 { /* Para pantallas muy pequeñas, si lo usas */
+                width: 100%;
+            }
+        }
+        @media (min-width: 768px) { /* En pantallas medianas (md), 2 por fila */
+            .products-grid-container .col-md-6 {
+                width: 50%; /* Ocupa la mitad del ancho del contenedor padre */
+            }
+        }
+    </style>
+</head>
+<body>
+      <div class="navbar">
+        <a href="ecommerce.html">Inicio</a>
+        <a href="productos.html">Productos</a>
+        <a href="categorias.html">Categorías</a>
+        <a href="#" class="active">Tienda y Carrito</a>
+        <a href="pedidos.html">Mis Pedidos</a>
+        <a href="index.html" id="logoutNavLink">Cerrar Sesión</a>
+    </div>
+
+    <div class="container">
+        <h1>Tienda de Productos y Carrito</h1>
+        <div id="messageArea" class="message-area"></div>
+
+        <div class="main-content-shop">
+            <div class="products-section">
+                <h2>Productos Disponibles</h2>
+                <div id="productsList" class="products-grid-container row justify-content-center g-3">
+                    <p class="text-center text-muted">Cargando productos...</p>
+                </div>
+            </div>
+
+            <div class="cart-section">
+                <h2>Tu Carrito</h2>
+                <div class="cart-table-container">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>Producto</th>
+                                <th>Cantidad</th>
+                                <th>Subtotal</th>
+                                <th>Acciones</th>
+                            </tr>
+                        </thead>
+                        <tbody id="cartItemsBody">
+                            <tr><td colspan="4" class="text-center text-muted">Tu carrito está vacío.</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="cart-summary">
+                    Total del Carrito: $<span id="cartTotal">0.00</span>
+                </div>
+
+                <div class="cart-actions">
+                    <button id="clearCartButton" class="btn btn-clear">Vaciar Carrito</button>
+                    <button id="checkoutButton" class="btn btn-success">Realizar Pedido</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div
+      class="modal fade"
+      id="compraExitosaModal"
+      tabindex="-1"
+      aria-labelledby="compraExitosaModalLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+          <div class="modal-header bg-success text-white">
+            <h5 class="modal-title" id="compraExitosaModalLabel">
+              ¡Compra Realizada!
+            </h5>
+            <button
+              type="button"
+              class="btn-close btn-close-white"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            ></button>
+          </div>
+          <div class="modal-body text-center">
+            <div class="mb-3">
+              <div class="text-success" style="font-size: 4rem">✓</div>
+            </div>
+            <h4>¡Tu compra se realizó exitosamente!</h4>
+            <p class="text-muted">
+              Gracias por tu compra. Recibirás un email de confirmación con los
+              detalles de tu pedido.
+            </p>
+            <p>
+              <strong>Total pagado: $<span id="modal-total">0.00</span></strong>
+            </p>
+          </div>
+          <div class="modal-footer">
+            <button
+              type="button"
+              class="btn btn-success"
+              data-bs-dismiss="modal"
+            >
+              Continuar Comprando
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+    <footer
+      id="redes-sociales"
+      class="bg-light p-4 mt-5 d-flex justify-content-between align-items-center"
+    >
+      <img
+        src="https://dummyimage.com/120x120/cccccc/000000.png"
+        width="120"
+        height="120"
+        alt="Logo"
+      />
+      <div class="d-flex gap-4">
+        <a href="https://www.facebook.com" target="_blank">
+          <img
+            src="https://dummyimage.com/60x60/cccccc/000000.png"
+            width="60"
+            height="60"
+            alt="Facebook"
+          />
+        </a>
+        <a href="https://www.instagram.com" target="_blank">
+          <img
+            src="https://dummyimage.com/60x60/cccccc/000000.png"
+            width="60"
+            height="60"
+            alt="Instagram"
+          />
+        </a>
+        <a href="https://www.x.com" target="_blank">
+          <img
+            src="https://dummyimage.com/60x60/cccccc/000000.png"
+            width="60"
+            height="60"
+            alt="Twitter"
+          />
+        </a>
+      </div>
+    </footer>
+
+    <script src="js/carrito.js"></script> <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.min.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const loggedInUserId = localStorage.getItem('loggedInUserId');
+            if (!loggedInUserId) {
+                alert('No se ha seleccionado ningún usuario. Por favor, selecciona tu usuario en la página de inicio de sesión.');
+                window.location.href = 'index.html'; // Redirigir si no hay sesión simulada
+            }
+
+            const logoutNavLink = document.getElementById('logoutNavLink');
+            logoutNavLink.addEventListener('click', (e) => {
+                e.preventDefault(); // Evita la navegación inmediata
+                localStorage.removeItem('loggedInUserId');
+                alert('Has cerrado tu sesión simulada.');
+                window.location.href = 'index.html';
+            });
+        });
+    </script>
+</body>
+</html>
